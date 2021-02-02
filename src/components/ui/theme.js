@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const pBlue = "#0B72B9";
-const pOrgane = "#FFBA60";
+const pBlue = "#B3C0A4";
+const pOrgane = "#DCC48E";
 
 export default createMuiTheme({
   palette: {
