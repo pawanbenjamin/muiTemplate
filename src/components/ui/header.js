@@ -136,13 +136,13 @@ export default function Header(props) {
     { name: "Socialmedia", link: "/socialmedia" },
   ];
 
-  const routes = [
-    { name: "Home", link: "/" },
-    { name: "About Us", link: "/aboutus" },
-    { name: "Products", link: "/products" },
-    { name: "Media", link: "/media" },
-    { name: "Contact Us", link: "/contactus" },
-  ];
+  // const routes = [
+  //   { name: "Home", link: "/" },
+  //   { name: "About Us", link: "/aboutus" },
+  //   { name: "Products", link: "/products" },
+  //   { name: "Media", link: "/media" },
+  //   { name: "Contact Us", link: "/contactus" },
+  // ];
 
   useEffect(() => {
     switch (window.location.pathname) {
@@ -401,7 +401,10 @@ export default function Header(props) {
             component={Link}
             to="/estimate"
             selected={value === 5}
-            classes={{ selected: classes.drawerItemSelected }}
+            classes={{
+              root: classes.drawerItemSelected,
+              selected: classes.drawerItemSelected,
+            }}
           >
             <ListItemText className={classes.drawerItem} disableTypography>
               Free Estimate
