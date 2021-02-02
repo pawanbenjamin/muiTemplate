@@ -87,6 +87,9 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     backgroundColor: theme.palette.common.blue,
+    "& .MuiListIetmText-root": {
+      opacity: 1,
+    },
   },
   drawerIcon: {
     height: "50px",
@@ -108,6 +111,9 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerItemSelected: {
     opacity: 1,
+  },
+  appBar: {
+    zIndex: theme.zIndex.modal + 1,
   },
 }));
 
@@ -276,6 +282,7 @@ export default function Header(props) {
         classes={{ paper: classes.menu }}
         MenuListProps={{ onMouseLeave: handleClose }}
         elevation={0}
+        style={{ zIndex: 1302 }}
       >
         {menuOptions.map((option, i) => (
           <MenuItem
@@ -307,6 +314,7 @@ export default function Header(props) {
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
       >
+        <div className={classes.toolbarMargin} />
         <List disablePadding>
           <ListItem
             onClick={() => {
@@ -317,15 +325,9 @@ export default function Header(props) {
             component={Link}
             to="/"
             selected={value === 0}
+            classes={{ selected: classes.drawerItemSelected }}
           >
-            <ListItemText
-              className={
-                value === 0
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Home
             </ListItemText>
           </ListItem>
@@ -338,15 +340,9 @@ export default function Header(props) {
             component={Link}
             to="/aboutus"
             selected={value === 1}
+            classes={{ selected: classes.drawerItemSelected }}
           >
-            <ListItemText
-              className={
-                value === 1
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               About Us
             </ListItemText>
           </ListItem>
@@ -359,15 +355,9 @@ export default function Header(props) {
             component={Link}
             to="/products"
             selected={value === 2}
+            classes={{ selected: classes.drawerItemSelected }}
           >
-            <ListItemText
-              className={
-                value === 2
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Products
             </ListItemText>
           </ListItem>
@@ -380,15 +370,9 @@ export default function Header(props) {
             component={Link}
             to="/media"
             selected={value === 3}
+            classes={{ selected: classes.drawerItemSelected }}
           >
-            <ListItemText
-              className={
-                value === 3
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Media
             </ListItemText>
           </ListItem>
@@ -401,15 +385,9 @@ export default function Header(props) {
             component={Link}
             to="/contactus"
             selected={value === 4}
+            classes={{ selected: classes.drawerItemSelected }}
           >
-            <ListItemText
-              className={
-                value === 4
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Contact Us
             </ListItemText>
           </ListItem>
@@ -423,15 +401,9 @@ export default function Header(props) {
             component={Link}
             to="/estimate"
             selected={value === 5}
+            classes={{ selected: classes.drawerItemSelected }}
           >
-            <ListItemText
-              className={
-                value === 5
-                  ? [classes.drawerItem, classes.drawerItemSelected]
-                  : classes.drawerItem
-              }
-              disableTypography
-            >
+            <ListItemText className={classes.drawerItem} disableTypography>
               Free Estimate
             </ListItemText>
           </ListItem>
@@ -450,7 +422,7 @@ export default function Header(props) {
   return (
     <>
       <ElevationScroll>
-        <AppBar position="fixed" color="primary">
+        <AppBar className={classes.appBar} position="fixed" color="primary">
           <Toolbar disableGutters>
             <Button
               component={Link}
