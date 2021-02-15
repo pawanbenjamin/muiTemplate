@@ -36,22 +36,22 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
-    marginBottom: "3em",
-    [theme.breakpoints.down("sm")]: {
-      marginBottom: "3em",
-    },
+    // marginBottom: "3em",
+    // [theme.breakpoints.down("sm")]: {
+    //   marginBottom: "3em",
+    // },
     [theme.breakpoints.down("xs")]: {
-      marginBottom: "1em",
+      marginBottom: ".5em",
     },
   },
   logo: {
-    height: "8em",
-    [theme.breakpoints.down("sm")]: {
-      height: "8em",
-    },
-    [theme.breakpoints.down("xs")]: {
-      height: "5em",
-    },
+    // height: "8em",
+    // [theme.breakpoints.down("sm")]: {
+    //   height: "8em",
+    // },
+    // [theme.breakpoints.down("xs")]: {
+    //   height: "5em",
+    // },
   },
   logoContainer: {
     padding: 0,
@@ -92,8 +92,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   drawerIcon: {
-    height: "50px",
-    width: "50px",
+    height: "40px",
+    width: "40px",
   },
   drawerIconContainer: {
     marginLeft: "auto",
@@ -118,16 +118,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header(props) {
+  const { value, setValue, selectedIndex, setSelectedIndex } = props;
+
   const classes = useStyles();
   const theme = useTheme();
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [value, setValue] = useState(0);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const menuOptions = [
     { name: "Media", link: "/media" },
@@ -259,12 +260,15 @@ export default function Header(props) {
         />
         <Tab
           className={classes.tab}
+          style={{
+            marginRight: "30px",
+          }}
           component={Link}
           to="/contactus"
           label="Contact Us"
         />
       </Tabs>
-      <Button
+      {/* <Button
         variant="contained"
         color="secondary"
         className={classes.button}
@@ -273,7 +277,7 @@ export default function Header(props) {
         // onClick={() => setValue(5)}
       >
         Free Estimate
-      </Button>
+      </Button> */}
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -427,7 +431,7 @@ export default function Header(props) {
       <ElevationScroll>
         <AppBar className={classes.appBar} position="fixed" color="primary">
           <Toolbar disableGutters>
-            <Button
+            {/* <Button
               component={Link}
               to="/"
               disableRipple
@@ -439,7 +443,7 @@ export default function Header(props) {
                 src={swirl}
                 className={classes.logo}
               ></img>
-            </Button>
+            </Button> */}
             {matches ? drawer : tabs}
           </Toolbar>
         </AppBar>
